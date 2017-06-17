@@ -1,6 +1,5 @@
 import random
 import itertools
-import re
 
 
 class Card:
@@ -67,30 +66,6 @@ class Deck:
         self.river.append(self.pop_card())
         self.update_community_cards()
         return self.river
-
-
-
-new_deck = Deck()
-new_deck.shuffle()
-my_hand = new_deck.deal_hand()
-new_deck.burn_card()
-print(my_hand)
-print(len(new_deck.cards))
-my_flop = new_deck.deal_flop()
-print(my_flop)
-print(len(new_deck.cards))
-new_deck.burn_card()
-print(len(new_deck.cards))
-new_deck.deal_turn()
-print(new_deck.turn)
-new_deck.update_community_cards()
-print(new_deck.community_cards)
-print(len(new_deck.cards))
-print(new_deck.cards_remaining())
-new_deck.burn_card()
-new_deck.deal_river()
-print(new_deck.community_cards)
-print(new_deck.cards_remaining())
 
 
 
