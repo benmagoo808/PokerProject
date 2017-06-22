@@ -6,30 +6,21 @@ total_cards = []
 hand_count = 0
 
 def start_new_hand():
-    while True:
-        print('Press "Return" to deal, "E" to exit:  ')
-        if input() == 'e':
-            break
-        else:
-            new_hand = Deck()
-            new_hand.shuffle()
-            hand = new_hand.deal_hand()
-            new_hand.burn_card()
-            flop = new_hand.deal_flop()
-            new_hand.burn_card()
-            turn = new_hand.deal_turn()
-            new_hand.burn_card()
-            river = new_hand.deal_river()
-            community = new_hand.community_cards
-            print('Your hand is:\n' + str(hand))
-            input()
-            print('The flop is:\n' + str(flop))
-            input()
-            print('The Turn comes:\n' + str(turn))
-            input()
-            print('The River shows:\n' + str(river) + '\n\nFor a table '
+    new_hand = Deck()
+    new_hand.shuffle()
+    hand = new_hand.deal_hand()
+    new_hand.burn_card()
+    flop = new_hand.deal_flop()
+    new_hand.burn_card()
+    turn = new_hand.deal_turn()
+    new_hand.burn_card()
+    river = new_hand.deal_river()
+    community = new_hand.community_cards
+    print('Your hand is:\n' + str(hand))
+    print('The flop is:\n' + str(flop))
+    print('The Turn comes:\n' + str(turn))
+    print('The River shows:\n' + str(river) + '\n\nFor a table '
                     'of:\n\n' + str(community))
-
 
     return total_cards.append(hand + community)
 
@@ -48,4 +39,9 @@ def detect_flush():
     else:
         return False
 
-detect_flush()
+
+start_new_hand()
+if detect_flush() == True:
+    print('Flush!!')
+else:
+    print('No Flush!!')
