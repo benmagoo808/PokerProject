@@ -1,5 +1,9 @@
 from Classes import Deck
+from Classes import Card
+import re
+
 total_cards = []
+hand_count = 0
 
 def start_new_hand():
     while True:
@@ -25,12 +29,23 @@ def start_new_hand():
             input()
             print('The River shows:\n' + str(river) + '\n\nFor a table '
                     'of:\n\n' + str(community))
-            total_cards.append(hand + community)
 
-            return total_cards
 
-def compare_hand():
-    print(str(hand))
+    return total_cards.append(hand + community)
 
-start_new_hand()
-print(total_cards)
+
+def detect_flush():
+    flush = ''.join(total_cards[hand_count])
+
+    if len(re.findall('Hearts', flush)) > 4:
+        return True
+    elif len(re.findall('Diamonds', flush)) > 4:
+        return True
+    elif len(re.findall('Spades', flush)) > 4:
+        return True
+    elif len(re.findall('Clubs', flush)) > 4:
+        return True
+    else:
+        return False
+
+detect_flush()
