@@ -1,6 +1,8 @@
 from Classes import Deck
-from Classes import Card
 import re
+from collections import Counter
+
+
 
 total_cards = []
 hand_count = 0
@@ -40,8 +42,33 @@ def detect_flush():
         return False
 
 
+def detect_multiple():
+    ranks = []
+    for i in range(len(total_cards[hand_count])):
+        card = total_cards[hand_count][i].split('-')
+        ranks.append(card[0])
+
+    c = Counter(ranks)
+    multiples = c.most_common(2)
+
+    if multiples[0][1] == 2:
+        return str('Pair of ' + multiples[0][0] + "'s ")
+    elif multiples[0][1] == 2 and multiples[1][1] == 2:
+        return str('Two Pair of ' + multiples[0][0] + "'s and " +
+                     multiples[1][0] + "'s ")
+    elif multiples[0][1] == 3:
+        return str('Three of a kind ' + multiples[0][0] + "'s ")
+    elif multiples[0][1] == 4:
+        return str('Four of a kind ' + multiples[0][0] + "'s ")
+    elif multiples[0][1] == 3 and multiples[1][1] == 2:
+        return str('Full House, ' + multiples[0][0] + "'s over " +
+                   multiples[1][0] + "'s ")
+
+    else:
+        return False
+
+
+
 start_new_hand()
-if detect_flush() == True:
-    print('Flush!!')
-else:
-    print('No Flush!!')
+print(detect_multiple())
+
