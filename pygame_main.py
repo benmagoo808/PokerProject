@@ -1,26 +1,30 @@
 import pygame
 from settings import Settings
+import sys
 from button import Button
+
 
 
 def run_game():
     # Initialize the game and draw the game window
     pygame.init()
-    pt_settings = Settings()
-    screen = pygame.display.set_mode((pt_settings.screen_width,
-                                     pt_settings.screen_height))
+    screen = pygame.display.set_mode((1200, 800))
     pygame.display.set_caption("Poker Trainer")
+    bg_color = (230, 230, 230)
+    deal_button = Button(screen, "Deal")
 
-    running = True
-
-    while running is True:
+    # Start main game loop
+    while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                running = False
+                sys.exit()
 
-        screen.blit(background, (0, 0))
-        pygame.display.update()
+        # Draw screen at every iteration of main loop
+        screen.fill(bg_color)
+        # Draw Button
+        deal_button.draw_button()
+        pygame.display.flip()
 
-    pygame.quit()
+
 
 run_game()
