@@ -11,25 +11,19 @@ from itertools import groupby
 # Define the pygame functions for display and interaction
 
 
-def check_events(phase, deal_button):
+def check_events(deal_button):
     """ Check for events in the game"""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = pygame.mouse.get_pos()
-            check_deal_button(phase, deal_button, mouse_x, mouse_y)
+            check_deal_button(deal_button, mouse_x, mouse_y)
 
-def check_deal_button(phase, deal_button, mouse_x, mouse_y):
+def check_deal_button(deal_button, mouse_x, mouse_y):
     """ Checks to see if the deal button is being pressed """
     if deal_button.rect.collidepoint(mouse_x, mouse_y):
-        if phase == 0:
-            start_new_hand()
-            hand_img_1 = total_cards[0][0]
-            hand_img_2 = total_cards[0][1]
-            phase += 1
-
-    return phase
+        print("button works")
 
 
 

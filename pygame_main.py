@@ -37,7 +37,7 @@ def run_game():
 
     # Start main game loop
     while True:
-        gf.check_events(deal_button, pt_stats)
+        gf.check_events(deal_button)
 
         gf.update_screen(pt_set, screen, deal_button, deck_image, card_1,
                          card_2, card_3, card_4, card_5, hand_1, hand_2)
