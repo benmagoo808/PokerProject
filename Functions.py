@@ -1,4 +1,4 @@
-from Classes import Deck
+import cards as pt_cards
 import re
 from collections import Counter
 from operator import itemgetter
@@ -10,7 +10,7 @@ high_card = []
 
 
 def start_new_hand():
-    new_hand = Deck()
+    new_hand = pt_cards.Deck()
     new_hand.shuffle()
     hand = new_hand.deal_hand()
     new_hand.burn_card()
