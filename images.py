@@ -16,23 +16,23 @@ class DeckImage():
 
 
     def blitme(self):
-        """ Draw the deck at it's present location """
+        """ Draw the deck  """
         self.screen.blit(self.image, self.rect)
 
 
 class CardBack():
 
 
-    def __init__(self, screen, card_num):
+    def __init__(self, screen, card_num, card):
         """ Initialize card back attributes """
         self.screen = screen
         self.screen_rect = screen.get_rect()
-        self.image = pygame.image.load('images/card_back.bmp')
+        self.image = pygame.image.load('images/{}.bmp'.format(str(card)))
         self.rect = self.image.get_rect()
 
         # Place 1st card of the table at the top left
-        self.rect.left = self.rect.width
-        self.rect.top = self.rect.height
+        self.rect.left = self.rect.width * card_num
+        self.rect.top = self.rect.width
 
         # Store the cards position
         self.x = float(self.rect.x)
@@ -41,5 +41,29 @@ class CardBack():
     def blitme(self):
         """ Draw the card """
         self.screen.blit(self.image, self.rect)
+
+
+class Hand():
+
+
+    def __init__(self, screen, card_num, card):
+        """ Initialize card back attributes """
+        self.screen = screen
+        self.screen_rect = screen.get_rect()
+        self.image = pygame.image.load('images/{}.bmp'.format(str(card)))
+        self.rect = self.image.get_rect()
+
+        # Place 1st card of the table at the top left
+        self.rect.left = self.rect.width * card_num
+        self.rect.bottom = self.screen_rect.bottom - 10
+
+        # Store the cards position
+        self.x = float(self.rect.x)
+
+
+    def blitme(self):
+        """ Draw the card """
+        self.screen.blit(self.image, self.rect)
+
 
 
