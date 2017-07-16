@@ -87,7 +87,7 @@ class DeckImage():
         self.screen.blit(self.image, self.rect)
 
 
-class CardBack():
+class CardImage():
 
 
     def __init__(self, screen, card_num, card):
