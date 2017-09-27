@@ -45,7 +45,7 @@ def deal_cards():
         stat.card_6_val = value_list[6]
     else:
         stat.stats_reset()
-
+        print(value_list)
 
 
 
